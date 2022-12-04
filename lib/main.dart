@@ -1,7 +1,8 @@
 import 'package:base_app/base_app.dart';
-import 'package:base_app/micro_app.dart';
-import 'package:base_app/config.dart';
 import 'package:flutter/material.dart';
+import 'package:micro_app_login/micro_app_login.dart';
+import 'package:micro_core/config.dart';
+import 'package:micro_core/micro_app.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget with BaseApp {
 
   @override
   Widget build(BuildContext context) {
+    super.registerRoutes();
     return MaterialApp(
       title: 'Micro Frontends',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      navigatorKey: navigatorKey,
       onGenerateRoute: super.generateRoute,
       initialRoute: '/login',
     );
@@ -27,5 +28,5 @@ class MyApp extends StatelessWidget with BaseApp {
   Map<String, WidgetBuilderArgs> get baseRoutes => {};
 
   @override
-  List<MicroApp> get microApps => [];
+  List<MicroApp> get microApps => [MicroAppLoginResolver()];
 }
